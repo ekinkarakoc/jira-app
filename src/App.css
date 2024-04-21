@@ -59,7 +59,7 @@
   font-size: 15px;
   color: white;
 }
-.task-update{
+.task-update-button{
   padding: 5px;
   width: 80px;
   background-color: blue;
@@ -73,3 +73,13 @@
 .task-title{
   margin-bottom: 5px;
 }
+
+.update-button{
+background-color: blueviolet;
+}
+
+.task-update{
+  width: 300px;
+}
+
+
