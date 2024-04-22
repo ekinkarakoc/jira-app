@@ -1,7 +1,13 @@
 import { useState } from "react";
 import "../App.css";
 
-const TaskCreate = ({ onCreate, task, taskFormUpdate }) => {
+const TaskCreate = ({
+  onCreate,
+  task,
+  taskFormUpdate,
+  handleEditClick,
+  onUpdate,
+}) => {
   const [title, setTitle] = useState(task ? task.title : "");
   const [taskDesc, setTaskDesc] = useState(task ? task.taskDesc : "");
 
@@ -13,7 +19,11 @@ const TaskCreate = ({ onCreate, task, taskFormUpdate }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreate(title, taskDesc);
+    if (taskFormUpdate) {
+      onUpdate(task.id, title, taskDesc);
+    } else {
+      onCreate(title, taskDesc);
+    }
     setTitle("");
     setTaskDesc("");
   };
@@ -46,7 +56,12 @@ const TaskCreate = ({ onCreate, task, taskFormUpdate }) => {
                 value={taskDesc}
                 onChange={handleTaskChange}
               />
-              <button className="task-button update-button">Güncelle</button>
+              <button
+                className="task-button update-button"
+                onClick={handleEditClick}
+              >
+                Güncelle
+              </button>
             </form>
           </div>
         </>
