@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TaskCreate from "./TaskCreate";
+import TasksContext from "../context/task";
 
-const TaskShow = ({ task, index, onDelete, onUpdate }) => {
+const TaskShow = ({ task, index }) => {
+  const { onDelete, editTaskById } = useContext(TasksContext);
   const [showEdit, setShowEdit] = useState(false);
 
   const handleDeleteClick = () => {
@@ -13,7 +15,7 @@ const TaskShow = ({ task, index, onDelete, onUpdate }) => {
   };
 
   const handleOnUpdate = (id, newTitle, newTaskDesc) => {
-    onUpdate(id, newTitle, newTaskDesc);
+    editTaskById(id, newTitle, newTaskDesc);
     setShowEdit(!showEdit);
   };
   return (

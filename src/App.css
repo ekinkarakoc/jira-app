@@ -32,6 +32,9 @@
   font-size: 20px;
 }
 
+.task-button:hover, .task-button:focus{
+  background-color: rgb(42, 70, 42);
+}
 .task-show{
   border: 1px solid green;
   border-radius: 30px;
